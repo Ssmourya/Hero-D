@@ -122,7 +122,7 @@ const Dashboard: React.FC = () => {
   const handleCardClick = (section: string) => {
     // Map dashboard cards to their corresponding routes
     const routeMap: { [key: string]: string } = {
-      'Employees': '/users', // Changed from '/employees' to '/users' to match the Users Management page
+      // 'Employees': '/users', // Removed Employee Management functionality
       'Customers': '/customers',
       'Suppliers': '/suppliers',
       'Products': '/products',
@@ -142,12 +142,7 @@ const Dashboard: React.FC = () => {
   };
 
   const cards = [
-    {
-      title: 'Employees',
-      count: dashboardStats.employeeCount,
-      icon: <User className="text-teal-600" size={24} />,
-      colorClass: 'bg-teal-100'
-    },
+
     {
       title: 'Customers',
       count: dashboardStats.customerCount,

@@ -15,10 +15,7 @@ const ProgressTrackerPage: React.FC<ProgressTrackerPageProps> = ({ onNavigate })
       title: 'Customer Management',
       description: 'Manage customer information, view customer history, and track customer interactions.'
     },
-    'employee': {
-      title: 'Employee Management',
-      description: 'Manage employee information, track attendance, and handle employee-related tasks.'
-    },
+
     'support': {
       title: 'Support Staff Management',
       description: 'Manage support staff, assign tasks, and track support ticket resolution.'
@@ -72,8 +69,8 @@ const ProgressTrackerPage: React.FC<ProgressTrackerPageProps> = ({ onNavigate })
 
       {/* Progress Tracker */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <StepProgressTracker 
-          onStepClick={handleStepClick} 
+        <StepProgressTracker
+          onStepClick={handleStepClick}
           activeStep={activeStep}
         />
       </div>
@@ -87,7 +84,7 @@ const ProgressTrackerPage: React.FC<ProgressTrackerPageProps> = ({ onNavigate })
         <div className="border border-gray-200 rounded-lg p-6 bg-gray-50 mb-6">
           <h3 className="text-lg font-medium mb-4">Step {Object.keys(stepDetails).indexOf(activeStep) + 1}: {stepDetails[activeStep].title}</h3>
           <p className="text-gray-600 mb-4">
-            This is the content for the {stepDetails[activeStep].title.toLowerCase()} step. 
+            This is the content for the {stepDetails[activeStep].title.toLowerCase()} step.
             Here you would typically see forms, data tables, or other UI elements related to this step.
           </p>
 

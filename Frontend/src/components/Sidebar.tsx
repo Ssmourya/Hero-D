@@ -72,7 +72,7 @@ export default function Sidebar({ onMenuSelect }: SidebarProps) {
       { label: 'Financial Management', icon: <DollarSign className="w-5 h-5" /> },
       { label: 'Inventory Management', icon: <Package className="w-5 h-5" /> },
       { label: 'Billing and Sales', icon: <FileText className="w-5 h-5" /> },
-      { label: 'Employee Management', icon: <Users className="w-5 h-5" /> },
+
       { label: 'Reports', icon: <BarChart3 className="w-5 h-5" /> },
       { label: 'System Settings', icon: <Settings className="w-5 h-5" /> },
     ] : []),
@@ -102,17 +102,11 @@ export default function Sidebar({ onMenuSelect }: SidebarProps) {
     { label: 'Banking', icon: <Wallet className="w-5 h-5" /> },
     { label: 'Demo', icon: <FileText className="w-5 h-5" /> },
     { label: 'Report', icon: <PieChart className="w-5 h-5" /> },
-    { label: 'Account', icon: <Users className="w-5 h-5" />, submenu: [
-      { label: 'Attendance', icon: <Clock className="w-4 h-4" /> },
-      { label: 'Emp. Leader', icon: <UserCheck className="w-4 h-4" /> },
-      { label: 'Emp Insentive', icon: <Wallet className="w-4 h-4" /> },
-      { label: 'Employee Duty', icon: <CalendarDays className="w-4 h-4" /> },
-      { label: 'Emp Data', icon: <ClipboardCheck className="w-4 h-4" /> },
-    ]},
+    { label: 'Account', icon: <Users className="w-5 h-5" /> },
     { label: 'Vehicles', icon: <Car className="w-5 h-5" /> },
     { label: 'JOYRIDE', icon: <Car className="w-5 h-5" /> },
     { label: 'Inventory', icon: <Package className="w-5 h-5" /> },
-    { label: 'Employee Management', icon: <Users className="w-5 h-5" /> },
+
   ];
 
   const toggleSubmenu = (label: string, event?: React.MouseEvent<HTMLButtonElement>) => {

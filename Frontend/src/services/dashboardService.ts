@@ -5,7 +5,7 @@ import { workshopService } from './workshopService';
 
 export interface DashboardStats {
   customerCount: number;
-  employeeCount: number;
+  // employeeCount removed
   vehicleCount: number;
   serviceCount: number;
   salesCount: number;
@@ -28,7 +28,7 @@ export const dashboardService = {
     try {
       // Fetch users
       const users = await userService.getAllUsers();
-      const employeeCount = users.filter(user => user.role !== 'Customer').length;
+      // Employee count calculation removed
       const customerCount = users.filter(user => user.role === 'Customer').length || users.length * 2; // Fallback if no customers
 
       // Fetch vehicles
@@ -71,7 +71,7 @@ export const dashboardService = {
 
       return {
         customerCount: customerCount || 0,
-        employeeCount: employeeCount || 0,
+        // employeeCount removed
         vehicleCount: vehicles.length || 0,
         serviceCount: workshopEntries.length || 0,
         salesCount: salesEntries.length || 0,
@@ -84,7 +84,7 @@ export const dashboardService = {
       // Return default values if there's an error
       return {
         customerCount: 0,
-        employeeCount: 0,
+        // employeeCount removed
         vehicleCount: 0,
         serviceCount: 0,
         salesCount: 0,

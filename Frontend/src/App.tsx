@@ -9,24 +9,16 @@ import Dashboard from './components/Dashboard';
 import DailyLedger from './components/DailyLedger';
 import ProgressTrackerPage from './components/ProgressTrackerPage';
 import UsersManagement from './components/UsersManagement';
-import CustomersManagement from './components/CustomersManagement';
 import ShowroomManagement from './components/ShowroomManagement';
 import WorkshopManagement from './components/WorkshopManagement';
 import JobCardManagement from './components/JobCardManagement';
+import CustomersManagement from './components/CustomersManagement';
 import GenericContent from './components/GenericContent';
 import SignIn from './home/SignIn';
 import SignUp from './home/SignUp';
 
 // Admin Components
 import AdminDashboard from './components/AdminDashboard';
-import AdminUserManagement from './components/AdminUserManagement';
-import AdminWorkshopManagement from './components/AdminWorkshopManagement';
-import AdminFinancialManagement from './components/AdminFinancialManagement';
-import AdminInventoryManagement from './components/AdminInventoryManagement';
-import AdminBillingManagement from './components/AdminBillingManagement';
-import AdminEmployeeManagement from './components/AdminEmployeeManagement';
-import AdminReporting from './components/AdminReporting';
-
 // Router imports are at the top of the file
 
 // Import services
@@ -356,20 +348,6 @@ function AppContent() {
       // Admin section
       case 'Admin Dashboard':
         return <AdminDashboard />;
-      case 'User Management':
-        return <AdminUserManagement />;
-      case 'Workshop Management':
-        return <AdminWorkshopManagement />;
-      case 'Financial Management':
-        return <AdminFinancialManagement />;
-      case 'Inventory Management':
-        return <AdminInventoryManagement />;
-      case 'Billing and Sales':
-        return <AdminBillingManagement />;
-      case 'Employee Management':
-        return <AdminEmployeeManagement />;
-      case 'Reports':
-        return <AdminReporting />;
       case 'System Settings':
         return renderGenericContent('System Settings');
 
@@ -410,11 +388,6 @@ function AppContent() {
       case 'Report':
         return renderGenericContent('Report');
       case 'Account':
-      case 'Attendance':
-      case 'Emp. Leader':
-      case 'Emp Insentive':
-      case 'Employee Duty':
-      case 'Emp Data':
         return renderGenericContent(selectedMenu);
       case 'Vehicles':
         return renderGenericContent('Vehicles');
@@ -422,8 +395,7 @@ function AppContent() {
         return renderGenericContent('JOYRIDE');
       case 'Inventory':
         return renderGenericContent('Inventory');
-      case 'Employee Management':
-        return renderGenericContent('Employee Management');
+
       default:
         return renderDashboard();
     }

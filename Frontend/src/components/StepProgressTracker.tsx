@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Users, 
-  User, 
-  HeadsetIcon, 
-  Truck, 
-  Car, 
-  Package, 
-  ShoppingCart, 
+import {
+  Users,
+  User,
+  HeadsetIcon,
+  Truck,
+  Car,
+  Package,
+  ShoppingCart,
   Search,
   CheckCircle2
 } from 'lucide-react';
@@ -29,7 +29,7 @@ const StepProgressTracker: React.FC<StepProgressTrackerProps> = ({ onStepClick, 
   // Define the steps
   const [steps, setSteps] = useState<Step[]>([
     { id: 'customer', label: 'Customer', icon: <Users size={24} />, completed: false, active: false },
-    { id: 'employee', label: 'Employee', icon: <User size={24} />, completed: false, active: false },
+
     { id: 'support', label: 'Support Staffs', icon: <HeadsetIcon size={24} />, completed: false, active: false },
     { id: 'suppliers', label: 'Suppliers', icon: <Truck size={24} />, completed: false, active: false },
     { id: 'vehicles', label: 'Vehicles', icon: <Car size={24} />, completed: false, active: false },
@@ -69,12 +69,12 @@ const StepProgressTracker: React.FC<StepProgressTrackerProps> = ({ onStepClick, 
     setSteps(prevSteps => {
       // Find the index of the active step
       const activeStepIndex = prevSteps.findIndex(step => step.active);
-      
+
       // If there's no active step or the last step is active, return the current state
       if (activeStepIndex === -1 || activeStepIndex === prevSteps.length - 1) {
         return prevSteps;
       }
-      
+
       // Create a new array with updated steps
       const newSteps = prevSteps.map((step, index) => {
         // Mark the current active step as completed and not active
@@ -90,13 +90,13 @@ const StepProgressTracker: React.FC<StepProgressTrackerProps> = ({ onStepClick, 
           return step;
         }
       });
-      
+
       // Call onStepClick with the new active step
       const newActiveStep = newSteps.find(step => step.active);
       if (newActiveStep) {
         onStepClick(newActiveStep.id);
       }
-      
+
       return newSteps;
     });
   };
@@ -104,19 +104,19 @@ const StepProgressTracker: React.FC<StepProgressTrackerProps> = ({ onStepClick, 
   return (
     <div className="w-full py-4">
       <h3 className="text-lg font-semibold mb-6">Progress Tracker</h3>
-      
+
       {/* Steps container */}
       <div className="flex flex-wrap justify-between items-center mb-6 relative">
         {/* Horizontal line connecting all steps */}
         <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2 z-0"></div>
-        
+
         {steps.map((step, index) => (
-          <div 
+          <div
             key={step.id}
             className="flex flex-col items-center relative z-10"
           >
             {/* Step */}
-            <div 
+            <div
               className="flex flex-col items-center relative cursor-pointer mb-2"
               onClick={() => handleStepClick(step.id)}
             >
@@ -126,46 +126,46 @@ const StepProgressTracker: React.FC<StepProgressTrackerProps> = ({ onStepClick, 
                   <CheckCircle2 size={16} className="text-green-500" />
                 </div>
               )}
-              
+
               {/* Icon container */}
-              <div 
+              <div
                 className={`w-14 h-14 rounded-full flex items-center justify-center mb-2 transition-all duration-300
-                  ${step.active 
-                    ? 'bg-green-500 text-white border-2 border-green-600 scale-110 shadow-lg' 
-                    : step.completed 
-                      ? 'bg-green-100 text-green-700 border-2 border-green-500' 
+                  ${step.active
+                    ? 'bg-green-500 text-white border-2 border-green-600 scale-110 shadow-lg'
+                    : step.completed
+                      ? 'bg-green-100 text-green-700 border-2 border-green-500'
                       : 'bg-white text-gray-500 border border-gray-300'
                   }`}
               >
                 {step.icon}
               </div>
-              
+
               {/* Label */}
-              <span 
+              <span
                 className={`text-xs font-medium text-center max-w-[80px]
-                  ${step.active 
-                    ? 'text-green-600' 
-                    : step.completed 
-                      ? 'text-green-700' 
+                  ${step.active
+                    ? 'text-green-600'
+                    : step.completed
+                      ? 'text-green-700'
                       : 'text-gray-500'
                   }`}
               >
                 {step.label}
               </span>
-              
+
               {/* Pending indicator for inactive and uncompleted steps */}
               {!step.active && !step.completed && (
                 <span className="text-gray-400 text-xs mt-1">...</span>
               )}
             </div>
-            
+
             {/* Step number */}
-            <div 
+            <div
               className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold
-                ${step.completed 
-                  ? 'bg-green-500 text-white' 
-                  : step.active 
-                    ? 'bg-green-600 text-white' 
+                ${step.completed
+                  ? 'bg-green-500 text-white'
+                  : step.active
+                    ? 'bg-green-600 text-white'
                     : 'bg-gray-200 text-gray-600'
                 }`}
             >
@@ -174,7 +174,7 @@ const StepProgressTracker: React.FC<StepProgressTrackerProps> = ({ onStepClick, 
           </div>
         ))}
       </div>
-      
+
       {/* Next button */}
       <div className="flex justify-end mt-6">
         <button
