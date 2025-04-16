@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://hero-4w521hh63-ssmouryas-projects.vercel.app/api/';
+const API_URL = 'https://hero-d.vercel.app/api/';
 
 // Create axios instance
 const api = axios.create({
