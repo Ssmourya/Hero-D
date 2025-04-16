@@ -36,7 +36,7 @@ const SignIn: React.FC = () => {
     setError('');
 
     try {
-      const response = await fetch('hero-ghpqhwje8-ssmouryas-projects.vercel.app/api/auth/login', {
+      const response = await fetch('https://hero-ghpqhwje8-ssmouryas-projects.vercel.app/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
