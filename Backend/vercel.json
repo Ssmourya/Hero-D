@@ -3,24 +3,13 @@
   "builds": [
     {
       "src": "api/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["src/**", "api/**"],
-        "nodeVersion": "22.x"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/server.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/api/server.js"
+      "dest": "api/server.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
