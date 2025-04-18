@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const { notFound, errorHandler } = require('../middleware/errorMiddleware');
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 // Load environment variables
 dotenv.config();
@@ -15,12 +15,18 @@ app.use(cors('*'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Log all incoming requests for debugging
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 // Import routes
-const ledgerRoutes = require('../routes/ledgerRoutes');
-const userRoutes = require('../routes/userRoutes');
-const vehicleRoutes = require('../routes/vehicleRoutes');
-const workshopRoutes = require('../routes/workshopRoutes');
-const authRoutes = require('../routes/authRoutes');
+const ledgerRoutes = require('./routes/ledgerRoutes');
+const userRoutes = require('./routes/userRoutes');
+const vehicleRoutes = require('./routes/vehicleRoutes');
+const workshopRoutes = require('./routes/workshopRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 // Use routes
 app.use('/api/ledger', ledgerRoutes);
@@ -28,6 +34,8 @@ app.use('/api/users', userRoutes);
 app.use('/api/vehicles', vehicleRoutes);
 app.use('/api/workshop', workshopRoutes);
 app.use('/api/auth', authRoutes);
+
+
 
 // Root route
 app.get('/', (req, res) => {
@@ -67,8 +75,20 @@ const ensureDBConnection = async () => {
   }
 };
 
-// Export handler for Vercel
+// Start the server if not in a serverless environment
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, async () => {
+    await ensureDBConnection();
+    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  });
+}
+
+// Export for Vercel serverless deployment
 module.exports = async (req, res) => {
   await ensureDBConnection();
-  app(req, res); // Hand off the request to Express
+  return app(req, res); // Hand off the request to Express
 };
+
+//Whatsapp api
+// Note: express.json() middleware is already applied above

@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { } = useAuth(); // We don't need login here
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,7 +31,10 @@ const SignUp: React.FC = () => {
     }
 
     try {
-      const response = await fetch('https://hero-d.vercel.app/api/auth/register', {
+      const baseUrl = import.meta.env.PROD
+        ? 'https://hero-d-backend.vercel.app/api'
+        : '/api';
+      const response = await fetch(`${baseUrl}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

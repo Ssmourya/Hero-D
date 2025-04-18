@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_URL = 'https://hero-d.vercel.app/api/';
+// Use relative URL in development, absolute URL in production
+const API_URL = import.meta.env.PROD
+  ? 'https://hero-d-backend.vercel.app/api/'
+  : '/api/';
 
 // Create axios instance
 const api = axios.create({

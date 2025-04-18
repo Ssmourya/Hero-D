@@ -10,8 +10,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://hero-d.vercel.app',
+        target: 'http://localhost:5000',
         changeOrigin: true,
+        // Don't rewrite the path as the backend expects /api prefix
+        // rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
+        ws: true,
       },
     },
   },

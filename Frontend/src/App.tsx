@@ -16,6 +16,8 @@ import CustomersManagement from './components/CustomersManagement';
 import GenericContent from './components/GenericContent';
 import SignIn from './home/SignIn';
 import SignUp from './home/SignUp';
+import ForgotPassword from './home/ForgotPassword';
+import ResetPassword from './home/ResetPassword';
 
 // Admin Components
 import AdminDashboard from './components/AdminDashboard';
@@ -446,6 +448,8 @@ function App() {
         <Routes>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/*" element={<AppContent />} />
           </Route>

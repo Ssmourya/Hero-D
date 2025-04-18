@@ -17,6 +17,18 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    mobile: {
+      type: String,
+      required: false,
+      default: '',
+      validate: {
+        validator: function(v) {
+          // Return true if empty (since it's not required) or if it's a 10-digit number
+          return v === '' || /^\d{10}$/.test(v);
+        },
+        message: props => `${props.value} is not a valid 10-digit mobile number!`
+      }
+    },
     password: {
       type: String,
       required: true,
@@ -26,6 +38,12 @@ const userSchema = new mongoose.Schema(
       required: true,
       enum: ['Active', 'Inactive'],
       default: 'Active',
+    },
+    resetPasswordToken: {
+      type: String,
+    },
+    resetPasswordExpire: {
+      type: Date,
     },
   },
   {

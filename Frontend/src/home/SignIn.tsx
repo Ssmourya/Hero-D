@@ -14,10 +14,19 @@ const SignIn: React.FC = () => {
   });
   const [error, setError] = useState('');
 
-  // Check if user was redirected from signup page
+  // Check if user was redirected from signup page or password reset
   useEffect(() => {
     // Check if there's a state with registration success
     if (location.state && location.state.fromSignup) {
+      setShowSuccessMessage(true);
+      setError('');
+      // Clear the state after showing the message
+      window.history.replaceState({}, document.title);
+    }
+
+    // Check if user was redirected from password reset
+    if (location.state && location.state.fromReset) {
+      setError('');
       setShowSuccessMessage(true);
       // Clear the state after showing the message
       window.history.replaceState({}, document.title);
@@ -36,7 +45,10 @@ const SignIn: React.FC = () => {
     setError('');
 
     try {
-      const response = await fetch('https://hero-d.vercel.app/api/auth/login', {
+      const baseUrl = import.meta.env.PROD
+        ? 'https://hero-d-backend.vercel.app/api'
+        : '/api';
+      const response = await fetch(`${baseUrl}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -108,6 +120,18 @@ const SignIn: React.FC = () => {
                 value={formData.password}
                 onChange={handleChange}
               />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-end">
+            <div className="text-sm">
+              <button
+                type="button"
+                onClick={() => navigate('/forgot-password')}
+                className="font-medium text-red-600 hover:text-red-500"
+              >
+                Forgot your password? (Reset via OTP)
+              </button>
             </div>
           </div>
 
