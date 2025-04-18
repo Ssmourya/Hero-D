@@ -40,7 +40,7 @@ const ResetPassword: React.FC = () => {
 
     try {
       const baseUrl = import.meta.env.PROD
-        ? 'https://hero-d-backend.vercel.app/api'
+        ? 'https://hero-d-1.onrender.com/api'
         : '/api';
       
       const response = await fetch(`${baseUrl}/auth/reset-password`, {
