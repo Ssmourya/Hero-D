@@ -46,7 +46,7 @@ const SignIn: React.FC = () => {
 
     try {
       const baseUrl = import.meta.env.PROD
-        ? 'https://hero-d.vercel.app//api'
+        ? 'https://hero-d.vercel.app/api'
         : '/api';
       const response = await fetch(`${baseUrl}/auth/login`, {
         method: 'POST',
