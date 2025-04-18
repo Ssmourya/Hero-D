@@ -9,7 +9,9 @@
     "data:import": "node src/seeder.js",
     "data:destroy": "node src/seeder.js -d",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel-build": "echo 'Build step completed'"
+    "vercel-build": "echo 'Build step completed'",
+    "build": "echo 'Build completed successfully'",
+    "lint": "echo 'No linting configured'"
   },
   "keywords": [],
   "author": "",
