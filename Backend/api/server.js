@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+const { notFound, errorHandler } = require('../src/middleware/errorMiddleware');
 
 // Load environment variables
 dotenv.config();
@@ -22,11 +22,11 @@ app.use((req, res, next) => {
 });
 
 // Import routes
-const ledgerRoutes = require('./routes/ledgerRoutes');
-const userRoutes = require('./routes/userRoutes');
-const vehicleRoutes = require('./routes/vehicleRoutes');
-const workshopRoutes = require('./routes/workshopRoutes');
-const authRoutes = require('./routes/authRoutes');
+const ledgerRoutes = require('../src/routes/ledgerRoutes');
+const userRoutes = require('../src/routes/userRoutes');
+const vehicleRoutes = require('../src/routes/vehicleRoutes');
+const workshopRoutes = require('../src/routes/workshopRoutes');
+const authRoutes = require('../src/routes/authRoutes');
 
 // Use routes
 app.use('/api/ledger', ledgerRoutes);
@@ -84,11 +84,10 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-// Export for Vercel serverless deployment
-module.exports = async (req, res) => {
-  await ensureDBConnection();
-  return app(req, res); // Hand off the request to Express
-};
+// Connect to the database when the app starts
+ensureDBConnection().catch(err => {
+  console.error('Failed to connect to MongoDB:', err);
+});
 
-//Whatsapp api
-// Note: express.json() middleware is already applied above
+// Export the Express app for Vercel serverless functions
+module.exports = app;
