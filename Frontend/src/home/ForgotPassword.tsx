@@ -28,7 +28,7 @@ const ForgotPassword: React.FC = () => {
 
     try {
       // Use the direct API endpoint
-      const baseUrl = 'http://localhost:5000/api';
+      const baseUrl = 'https://hero-d-nry1.vercel.app/api';
 
       const response = await fetch(`${baseUrl}/auth/generate-otp`, {
         method: 'POST',
@@ -74,7 +74,7 @@ const ForgotPassword: React.FC = () => {
 
     try {
       // Use the direct API endpoint
-      const baseUrl = 'http://localhost:5000/api';
+      const baseUrl = 'https://hero-d-nry1.vercel.app/api';
 
       const response = await fetch(`${baseUrl}/auth/verify-otp`, {
         method: 'POST',
