@@ -1,0 +1,10 @@
+.git
+.env.local
+node_modules
+npm-debug.log
+.DS_Store
+.idea/
+.vscode/
+*.log
+*.bak
+*.tmp

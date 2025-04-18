@@ -1,4 +1,5 @@
 const { Vonage } = require('@vonage/server-sdk');
+const { v4: uuidv4 } = require('uuid');
 
 // Initialize the Vonage client with proper credentials
 const vonage = new Vonage({
@@ -42,7 +43,7 @@ const sendWhatsAppOTP = async (to, otp) => {
       return { success: true, id: 'DEV_MODE_ID' };
     }
 
-    // Create the message object
+    // Create the message object with a unique client reference
     const message = {
       content: {
         type: "text",
@@ -56,6 +57,7 @@ const sendWhatsAppOTP = async (to, otp) => {
         type: "whatsapp",
         number: from,
       },
+      client_ref: uuidv4(), // Add a unique reference to avoid duplicate messages
     };
 
     // Send the WhatsApp message
